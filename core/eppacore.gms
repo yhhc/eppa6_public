@@ -179,7 +179,7 @@ $report:
   v:badvnucl_bout(g,r)$(active("adv-nucl",r))              o:pd(g,r)                prod:eb("adv-nucl",r)
   v:b_k(bt,r)$active(bt,r)                                 i:pk(r)                  prod:eb(bt,r)
   v:b_l(bt,r)$active(bt,r)                                 i:pl(r)                  prod:eb(bt,r)
-  v:b_f(bt,r)$active(bt,r)                                 i:pf("agri",r)           prod:eb(bt,r)
+  v:b_f(bt,r)$active(bt,r)                                 i:pf("crop",r)           prod:eb(bt,r)
   v:b_a(bt,g,r)$active(bt,r)                               i:pa(g,r)                prod:eb(bt,r)
   v:b_h(bt,g,r)$active(bt,r)                               i:phom(g,r)              prod:eb(bt,r)
   v:b_ff(bt,r)$active(bt,r)                                i:pbf(bt,r)              prod:eb(bt,r)
@@ -233,6 +233,9 @@ $report:
   v:dv_ptcarb(g,v,r)$(eint(g) or agri(g))                  i:ptcarb                 prod:dv(g,v,r)
   v:eoutb(e,bt,r)                                          i:pa(e,r)                prod:eb(bt,r)
   v:eoutbv(e,bt,v,r)                                       i:pa(e,r)                prod:ebv(bt,v,r)
+
+  v:df_n(r)						   i:pr(r)		    prod:n_e(r)
+  v:df_h(r)						   i:pr_h(r)		    prod:h_e(r)
 
 $peps:
 

@@ -556,6 +556,12 @@ tlimc.l(e,g,r)$eid_ghg_up(e,g,r) = 0;
 eb.l(bt,r)$active(bt,r)          = 0;
 ebv.l(vbt,v,r)$active(vbt,r)     = 0;
 
+lv_v.l(g,v,r)			 = 0;
+bv_l.l(bt,v,r)			 = 0;
+kv_v.l(g,v,r)			 = 0;
+bv_k.l(bt,v,r)			 = 0;
+bv_ff.l(bt,v,r)			 = 0;
+
 eppa.iterlim = 12000; 
 eppa.workspace = 50;
 eppa.optfile = 1;
@@ -1219,6 +1225,15 @@ rgdp_proj(r,t)           = rgdp0(r);
 
 * update the targeted real gdp level
 rgdp0(r)                 = rgdp0(r)*rgdpgrowth(r,t+1);
+
+* 8.18 Sectoral value-added
+
+sva(g,r,t)		 = pl.l(r)*(dl.l(g,r)+sum(v, lv_v.l(g,v,r))+(nl.l(r)+hl.l(r)+sum(bt, b_l.l(bt,r))+sum((bt,v), bv_l.l(bt,v,r)))$elec(g))
+			  +pk.l(r)*(dk.l(g,r)+(nk.l(r)+hk.l(r)+sum(bt, b_k.l(bt,r)))$elec(g))
+			  +sum(v, pkv.l(g,v,r)*kv_v.l(g,v,r))+sum((vbt,v), pvbk.l(vbt,v,r)*bv_k.l(vbt,v,r))
+			  +pf.l(g,r)*df.l(g,r)+(sum(bt, b_f.l(bt,r)*pf.l("crop",r))+sum(bt, pbf.l(bt,r)*b_ff.l(bt,r))+sum((bt,v),pbf.l(bt,r)*bv_ff.l(bt,v,r)))$(elec(g))
+			  +(pr.l(r)*df_n.l(r)+pr_h.l(r)*df_n.l(r))$(elec(g))
+			  ;
 
 
 );

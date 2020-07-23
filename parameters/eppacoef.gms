@@ -628,3 +628,7 @@ eta_t(r,g,t)    = 0;
 cstar_t(r,g,t)  = 0;
 xavg(g,r,t)     = 0;
 texpavg(r,t)    = 0;
+
+parameter
+sva(g,r,t)	sectoral value added;
+sva(g,r,t)	= 0;

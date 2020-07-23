@@ -118,6 +118,22 @@ data("209_windbio (TWh)",time,r)                  = eps + 277.7778*(bbwbioout(r,
 data("210_h2 (EJ)",time,r)                        = eps + bbh2out("oil",r,time);
 data("211_bio-oil (EJ)",time,r)                   = eps + bbiofuelout("bio-oil","roil",r,time);
 
+* Sectoral value added:
+data("301_value_added_CROP (10 bn US$)",time,r)		  = eps + sva("CROP",r,time);
+data("302_value_added_LIVE (10 bn US$)",time,r)		  = eps + sva("LIVE",r,time);
+data("303_value_added_FORS (10 bn US$)",time,r)		  = eps + sva("FORS",r,time);
+data("304_value_added_FOOD (10 bn US$)",time,r)		  = eps + sva("FOOD",r,time);
+data("305_value_added_COAL (10 bn US$)",time,r)		  = eps + sva("COAL",r,time);
+data("306_value_added_OIL  (10 bn US$)",time,r)		  = eps + sva("OIL",r,time);
+data("307_value_added_ROIL (10 bn US$)",time,r)		  = eps + sva("ROIL",r,time);
+data("308_value_added_GAS  (10 bn US$)",time,r)		  = eps + sva("GAS",r,time);
+data("309_value_added_ELEC (10 bn US$)",time,r)		  = eps + sva("ELEC",r,time);
+data("310_value_added_EINT (10 bn US$)",time,r)		  = eps + sva("EINT",r,time);
+data("311_value_added_OTHR (10 bn US$)",time,r)		  = eps + sva("OTHR",r,time);
+data("312_value_added_SERV (10 bn US$)",time,r)		  = eps + sva("SERV",r,time);
+data("313_value_added_TRAN (10 bn US$)",time,r)		  = eps + sva("TRAN",r,time);
+data("314_value_added_DWE  (10 bn US$)",time,r)		  = eps + sva("DWE",r,time);
+
 $ontext
 * In EPPA5:
 amf_rep("23_PE_bio", astep, areg) = sum(bt, bio_prod(bt, areg, astep));
