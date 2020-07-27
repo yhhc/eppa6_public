@@ -165,6 +165,7 @@ set	coal(i) /coal/;
 set	oil_col(enoe) /roil, coal/;
 set	refo(e) /roil/;
 SET     AGRI(I) Agriculture /crop, live, fors/,
+	crop(i) Crop sector /crop/,
 	EINT(I) Energy intensive /eint/;
 SET	TRANSFUEL(I)	SECTOR USING FUEL AS TRASNPORTATION /CROP, SERV, TRAN/;
 SET     AENOE(I) /COAL, OIL, GAS, ROIL, crop, live, fors, ELEC, EINT/;
@@ -330,41 +331,42 @@ set     bt   BACKSTOP TECHNOLOGIES
                  IGCC,
                  IGCAP, 
                  ADV-NUCL
-*                 CORNE, 
-*                 WHEATE, 
-*		 SUGARE, 
-*                 BEETE, 
-*                 RAPESO, 
-*                 SOYO, 
-*                 PALMO, 
-*		 PHEVTRN, 
-*                 EVTRN, 
-*                 CNGTRN, 
-*                 PHEVTRNVIN, 
-*                 EVTRNVIN 
                  /,
         LCBT(BT) 
-*                /SOLAR, H2, WIND, WINDBIO, WINDGAS, BIOELEC, NGCC, NGCAP, IGCAP, ADV-NUCL, PHEVTRN, EVTRN, CNGTRN /,
                 /SOLAR, H2, WIND, WINDBIO, WINDGAS, BIOELEC, NGCC, NGCAP, IGCC, IGCAP, ADV-NUCL, bio-fg, bio-oil/,
         VBT(BT)  VINTAGED BACKSTOP TECHNOLOGIES  
                 /NGCC, NGCAP, IGCAP, ADV-NUCL, WINDBIO, WINDGAS, IGCC/,
 	SBT(BT)  CARBON STORAGE BACKSTOP TECHNOLOGIES  
-                /NGCC, NGCAP, IGCAP/	 
+                /NGCC, NGCAP, IGCAP/,	 
         LNBT(BT) BACKSTOP TECHNOLOGIES DEMANDING LAND 
-                /BIOELEC, BIO-OIL/
-*                /BIOELEC, BIO-OIL, WIND, CORNE, WHEATE, SUGARE, BEETE, RAPESO, PALMO, SOYO/,
-*	BIOFUEL(BT) BACKSTOP TECHNOLOGIES BIO-FUEL 
-*                /CORNE, WHEATE, SUGARE, BEETE, RAPESO, PALMO, SOYO/,
-*	ETHANOL(BT)
-*                /CORNE, WHEATE, SUGARE, BEETE/,
-*	BIODIESEL(BT)
-*                / RAPESO, PALMO, SOYO/,
-*	GRAIN(BT)
-*                /CORNE, WHEATE/,
-*	soyo(bt) 
-*                /soyo/
-         
-;
+                /BIOELEC, BIO-OIL/,
+		
+        ebt(bt)  /
+		 SOLAR, 
+*                 SYNF-OIL, 
+*                 SYNF-GAS, 
+*                 H2, 
+                 WIND, 
+                 WINDBIO, 
+                 WINDGAS, 
+                 BIOELEC, 
+*                 BIO-OIL,
+*                 bio-fg, 
+                 NGCC, 
+                 NGCAP, 
+                 IGCC,
+                 IGCAP, 
+                 ADV-NUCL
+                 /,
+	obt(bt)  /
+                 BIO-OIL,
+                 bio-fg, 
+                 SYNF-OIL 
+		 /,
+	gbt(bt)  /
+                 SYNF-GAS, 
+                 H2
+		 /;
 
 * end VJK
 

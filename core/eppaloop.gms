@@ -1228,10 +1228,20 @@ rgdp0(r)                 = rgdp0(r)*rgdpgrowth(r,t+1);
 
 * 8.18 Sectoral value-added
 
-sva(g,r,t)		 = pl.l(r)*(dl.l(g,r)+sum(v, lv_v.l(g,v,r))+(nl.l(r)+hl.l(r)+sum(bt, b_l.l(bt,r))+sum((bt,v), bv_l.l(bt,v,r)))$elec(g))
-			  +pk.l(r)*(dk.l(g,r)+(nk.l(r)+hk.l(r)+sum(bt, b_k.l(bt,r)))$elec(g))
-			  +sum(v, pkv.l(g,v,r)*kv_v.l(g,v,r))+sum((vbt,v), pvbk.l(vbt,v,r)*bv_k.l(vbt,v,r))
-			  +pf.l(g,r)*df.l(g,r)+(sum(bt, b_f.l(bt,r)*pf.l("crop",r))+sum(bt, pbf.l(bt,r)*b_ff.l(bt,r))+sum((bt,v),pbf.l(bt,r)*bv_ff.l(bt,v,r)))$(elec(g))
+sva(g,r,t)		 = pl.l(r)*(dl.l(g,r)+sum(v, lv_v.l(g,v,r))+(nl.l(r)+hl.l(r)+ sum(ebt, b_l.l(ebt,r))+sum((ebt,v), bv_l.l(ebt,v,r)))$elec(g)
+										    +(sum(obt, b_l.l(obt,r))+sum((obt,v), bv_l.l(obt,v,r)))$roil(g)	
+										    +(sum(gbt, b_l.l(gbt,r))+sum((gbt,v), bv_l.l(gbt,v,r)))$gas(g)
+												)
+			  +pk.l(r)*(dk.l(g,r)+(nk.l(r)+hk.l(r)+ sum(ebt, b_k.l(ebt,r)))$elec(g)
+							      +(sum(obt, b_k.l(obt,r)))$roil(g)	
+							      +(sum(gbt, b_k.l(gbt,r)))$gas(g)
+												)
+			  +sum(v, pkv.l(g,v,r)*kv_v.l(g,v,r))+(sum((vbt,v), pvbk.l(vbt,v,r)*bv_k.l(vbt,v,r)))$(elec(g))
+			  +pf.l(g,r)*df.l(g,r)
+			  +(sum(ebt, b_f.l(ebt,r)*pf.l("crop",r))+sum(ebt, pbf.l(ebt,r)*b_ff.l(ebt,r))+sum((ebt,v),pbf.l(ebt,r)*bv_ff.l(ebt,v,r)))$(elec(g))
+			  +(sum(obt, b_f.l(obt,r)*pf.l("crop",r))+sum(obt, pbf.l(obt,r)*b_ff.l(obt,r))+sum((obt,v),pbf.l(obt,r)*bv_ff.l(obt,v,r)))$(roil(g))
+			  +(sum(gbt, b_f.l(gbt,r)*pf.l("crop",r))+sum(gbt, pbf.l(gbt,r)*b_ff.l(gbt,r))+sum((gbt,v),pbf.l(gbt,r)*bv_ff.l(gbt,v,r)))$(gas(g))
+
 			  +(pr.l(r)*df_n.l(r)+pr_h.l(r)*df_n.l(r))$(elec(g))
 			  ;
 

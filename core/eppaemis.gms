@@ -39,7 +39,17 @@ CEECI(E,R,T) = 100*EPSLON(E)*CJ(E,R)*(hefd(E,R)/HEUSEF(E,R))$heusef(e,r)*EOUTF.L
 
 * Sectoral CO2 emissions
 *sco2(t,g,r)  = sum(e$eusep(e,g,r), 100*EPSLON(E)*CJ(E,R)*(eind(e,g,r)/eusep(e,g,r))*EOUTI.L(E,G,R));
-sco2(t,g,r)  = sum(e$eusep(e,g,r), CEEI(G,E,R,T));
+*sco2(t,g,r)  = sum(e$eusep(e,g,r), CEEI(G,E,R,T));
+
+*ee(r,e,t) = sum(g$eusep(e,g,r), (eind(e,g,r)/eusep(e,g,r))*eouti.l(e,g,r))
+*                 + (hefd(e,r)/heusef(e,r))$heusef(e,r)*eoutf.l(e,r)
+*                 + (tefd(e,r)/teusef(e,r))$teusef(e,r)*eouthtr.l(e,r);
+
+*CO2F(R,E,T)  = 100*EPSLON(E)*CJ(E,R)*EE(R,E,T)*44/12;
+
+sco2(t,g,r)				= sum(e$eusep(e,g,r), 100*EPSLON(E)*CJ(E,R)*((eind(e,g,r)/eusep(e,g,r))*eouti.l(e,g,r))*44/12);
+sco2(t,"household_non-transport",r)	= sum(e$heusef(e,r), 100*EPSLON(E)*CJ(E,R)*((hefd(e,r)/heusef(e,r))*eoutf.l(e,r))*44/12);
+sco2(t,"household_transport",r)		= sum(e$teusef(e,r), 100*EPSLON(E)*CJ(E,R)*((tefd(e,r)/teusef(e,r))*eouthtr.l(e,r))*44/12);
 
 * Final demand CO2 emissions - HH tran
 *ftco2_ref(t,r)= 100*EPSLON("roil")*CJ("roil",R)*(tefd("roil",r)/teusef("roil",r))*EOUTHTR.L("roil",r)
@@ -86,6 +96,14 @@ bco2("windgas",r,t)$active("windgas",r) = 100*epslon("gas")*eeib("windgas","gas"
 * CO2 total from burning fossil fuels
 ftotco2(r,t) =  SUM(E, CO2F(R,E,T))+sum(bt,bco2(bt,r,t));                                          
 totco2(r,t)                     = ftotco2(r,t)+ctotco2(r,t)+etotco2(r,t);
+stotco2(g,r,t)			= sco2(t,g,r)
+				 +(sum(ebt,bco2(ebt,r,t)))$elec(g)
+				 +(sum(obt,bco2(obt,r,t)))$roil(g)
+				 +(sum(gbt,bco2(gbt,r,t)))$gas(g)
+				 +(etotco2(r,t))$eint(g)
+				 +(ctotco2(r,t))$crop(g);
+stotco2("household_non-transport",r,t)	= sco2(t,"household_non-transport",r);	
+stotco2("household_transport",r,t)	= sco2(t,"household_transport",r);	
 
 * GHG emissions based on v-ref
 

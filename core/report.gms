@@ -134,6 +134,24 @@ data("312_value_added_SERV (10 bn US$)",time,r)		  = eps + sva("SERV",r,time);
 data("313_value_added_TRAN (10 bn US$)",time,r)		  = eps + sva("TRAN",r,time);
 data("314_value_added_DWE  (10 bn US$)",time,r)		  = eps + sva("DWE",r,time);
 
+* Sectoral emissions:
+data("401_CO2 emissions_CROP (Mt)",time,r)	  = eps + stotco2("CROP",r,time);
+data("402_CO2 emissions_LIVE (Mt)",time,r)	  = eps + stotco2("LIVE",r,time);
+data("403_CO2 emissions_FORS (Mt)",time,r)	  = eps + stotco2("FORS",r,time);
+data("404_CO2 emissions_FOOD (Mt)",time,r)	  = eps + stotco2("FOOD",r,time);
+data("405_CO2 emissions_COAL (Mt)",time,r)	  = eps + stotco2("COAL",r,time);
+data("406_CO2 emissions_OIL  (Mt)",time,r)	  = eps + stotco2("OIL",r,time);
+data("407_CO2 emissions_ROIL (Mt)",time,r)	  = eps + stotco2("ROIL",r,time);
+data("408_CO2 emissions_GAS  (Mt)",time,r)	  = eps + stotco2("GAS",r,time);
+data("409_CO2 emissions_ELEC (Mt)",time,r)	  = eps + stotco2("ELEC",r,time);
+data("410_CO2 emissions_EINT (Mt)",time,r)	  = eps + stotco2("EINT",r,time);
+data("411_CO2 emissions_OTHR (Mt)",time,r)	  = eps + stotco2("OTHR",r,time);
+data("412_CO2 emissions_SERV (Mt)",time,r)	  = eps + stotco2("SERV",r,time);
+data("413_CO2 emissions_TRAN (Mt)",time,r)	  = eps + stotco2("TRAN",r,time);
+data("414_CO2 emissions_DWE  (Mt)",time,r)	  = eps + stotco2("DWE",r,time);
+data("415_CO2 emissions_household-transport (Mt)",time,r)	  = eps + stotco2("household_transport",r,time);
+data("416_CO2 emissions_household-nontransport (Mt)",time,r)	  = eps + stotco2("household_non-transport",r,time);
+			      				  
 $ontext
 * In EPPA5:
 amf_rep("23_PE_bio", astep, areg) = sum(bt, bio_prod(bt, areg, astep));

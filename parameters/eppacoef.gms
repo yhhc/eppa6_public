@@ -370,6 +370,7 @@ parameters
  ftotco2(r,t)      CO2 total from burning fossil fuels
  ctotco2(r,t)      CO2 total from crop sector
  etotco2(r,t)      CO2 total from eint sector
+ stotco2(*,r,t)	   Total sectoral CO2
 
  ddelas(t,r)       top final demand substitution elasticity by period t
  e_prd(i,r,t)      fossil fuel production in EJ
